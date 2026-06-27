@@ -9,10 +9,22 @@ py-sdk(PyPI: polymarket-client)의 PublicClient 하나로 Gamma 탐색 / CLOB �
 """
 from datetime import datetime, timezone
 import statistics
+import sys
 
 import polymarket as pm
 
 import config
+
+
+def use_utf8_stdout() -> None:
+    """엔트리포인트용: 콘솔 출력 인코딩을 UTF-8로 강제.
+
+    한국어 Windows 콘솔(cp949)은 em-dash·화살표 등을 인코딩 못 해 print에서
+    UnicodeEncodeError로 죽는다. 진입점에서 한 번 호출해 출력 경로를 막아둔다.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
 
 
 def get_client() -> pm.PublicClient:
@@ -107,6 +119,7 @@ def resolution(market):
 
 # ── 스모크 테스트: 사용자 머신에서 `py polyclient.py` ────────────────
 if __name__ == "__main__":
+    use_utf8_stdout()
     print("[스모크] PublicClient 생성 및 마켓 1개 호가 조회 시도...")
     try:
         client = get_client()

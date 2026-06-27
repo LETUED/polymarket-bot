@@ -14,6 +14,7 @@ import resolve
 
 
 def main() -> int:
+    polyclient.use_utf8_stdout()
     do_settle = "--no-settle" not in sys.argv
 
     if do_settle:

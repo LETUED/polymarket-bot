@@ -12,6 +12,7 @@ import strategy
 
 
 def main() -> int:
+    polyclient.use_utf8_stdout()
     limit = 200
     if "--limit" in sys.argv:
         limit = int(sys.argv[sys.argv.index("--limit") + 1])
