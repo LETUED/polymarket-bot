@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Secrets — 절대 커밋 금지 (지갑 프라이빗 키 / API 자격)
+.env
+*.key
+secrets.*
+
+# Logs / 시뮬 결과 산출물
+logs/
+*.log
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
