@@ -18,7 +18,7 @@
 ## 환경
 - Windows 10, Python 3.13 (`py` 명령)
 - 공식 SDK: Polymarket `py-sdk` (구버전 `py-clob-client`는 archived → 사용 금지)
-- 읽기 전용: Gamma(마켓 탐색) / Data(과거) / CLOB(호가) + real-time-data-client(WebSocket)
+- 읽기 전용: Gamma(마켓 탐색) / Data(과거) / CLOB(호가) — 현재 REST(PublicClient)만 사용, WebSocket 실시간 스트림은 미구현
 
 ## 구조 (모두 리포 루트의 작은 모듈)
 | 파일 | 역할 |
