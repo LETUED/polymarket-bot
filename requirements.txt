@@ -1,5 +1,8 @@
 # 폴리마켓 드라이런 봇 의존성
-# 공식 SDK(py-sdk). PyPI 배포명은 polymarket-client 이며 현재 프리릴리스라 --pre 필요.
-#   설치: py -m pip install --pre -r requirements.txt
+# 공식 SDK(py-sdk). PyPI 배포명은 polymarket-client 이며, 프리릴리스 버전을 핀 고정.
+#   설치: py -m pip install -r requirements.txt  (정확 핀이라 --pre 불필요)
 # 읽기 전용(마켓 탐색/호가/과거가격/체결)에는 지갑·API키가 필요 없다.
-polymarket-client
+polymarket-client==0.1.0b10
+
+# 개발용 (tests/)
+pytest
