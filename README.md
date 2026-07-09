@@ -35,7 +35,7 @@
 Windows, Python 3.13 (`py`). 실주문은 전송하지 않으며 모든 결과는 `logs\*.jsonl`.
 
 ```cmd
-py -m pip install --pre -r requirements.txt   :: 공식 py-sdk 설치
+py -m pip install -r requirements.txt           :: 공식 py-sdk (버전 핀)
 py polyclient.py                              :: 스모크: 마켓 1개 호가/과거가격
 py run_scan.py                                :: 1회 스캔 → logs\orders.jsonl, fills.jsonl
 py run_report.py                              :: 정산 + 가능성 리포트
@@ -46,6 +46,12 @@ py run_report.py --no-settle                  :: 오프라인(쌓인 settled만 
 
 > 일부 사내/클라우드 환경은 `polymarket.com` egress가 막혀 라이브 호출이 403일 수 있다 — 개인 PC에서 실행할 것. 설계 프롬프트는 `docs/ultraplan-prompt.md`.
 
+## 결과
+
+2026-07-09 라이브 1회 스캔(후보 100개 순회) → 신규 진입 1건, 정산·리포트 실행 — 전체 출력은 [docs/실행증거_2026-07-09.md](docs/실행증거_2026-07-09.md).
+핵심 계산 모듈(costs·sizing·strategy)은 pytest 14개로 검증: `py -m pytest tests/ -q`.
+
 ## 상태
 
 측정 프레임워크(스캔→시뮬 체결→정산→판정)까지 완성. 판정에 필요한 정산 표본(N ≥ 50)을 쌓는 포워드 러닝은 아직 진행 중이라 가능/불가능 결론은 미확정.
+2026-07 정비: SDK 버전 핀(0.1.0b10)·pytest·실행 증거 추가. 판정은 여전히 포워드 러닝 누적 대기.
